@@ -50,7 +50,7 @@ export default function ProductList({ initialProducts, nextUrl }: Props) {
                 src={product.imageUrl}
                 alt={product.name}
                 style={{
-                  height: "250px",
+                  maxHeight: "250px",
                   marginLeft:"auto",
                   marginRight:"auto",
                   borderRadius: "8px",

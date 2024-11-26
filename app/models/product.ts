@@ -27,7 +27,6 @@ export interface ProductOption {
     options: ProductOption[];
   }
   
-  // Interface for a product in the list (simplified)
   export interface ProductListItem {
     code: number;
     name: string;

@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom'; // For routing
-import ProductList from './ProductList'; // Import your ProductList component
-import '@testing-library/jest-dom'; // For additional matchers
+import { MemoryRouter } from 'react-router-dom';
+import ProductList from './ProductList';
+import '@testing-library/jest-dom';
 
 // Mock Data
 const mockInitialProducts = [

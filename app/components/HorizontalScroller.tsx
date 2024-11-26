@@ -28,11 +28,11 @@ export default function HorizontalScroller({ products }: { products: Product[] }
         {products.map((product, index) => (
           <Link
             key={product.code}
-            to={`/product/${product.code}`} // Navigate to the product detail page
+            to={`/product/${product.code}`}
             style={{
-              flex: "0 0 100%", // Each product takes up the full width of the viewport
+              flex: "0 0 100%",
               scrollSnapAlign: "center",
-              textDecoration: "none", // Remove default link styles
+              textDecoration: "none",
               color: "inherit",
             }}
           >
@@ -42,22 +42,22 @@ export default function HorizontalScroller({ products }: { products: Product[] }
                 padding: "1rem",
                 borderRadius: "8px",
                 boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-                textAlign: "left", // Align text to the left inside its container
+                textAlign: "left",
                 width: "100%",
                 maxWidth: "300px",
                 minHeight: "230px",
-                display: "flex", // Row layout
-                flexDirection: "column", // Stack content vertically
+                display: "flex",
+                flexDirection: "column",
                 gap: "1rem",
-                justifyContent: "space-between", // Distribute space between content
+                justifyContent: "space-between",
               }}
             >
               {/* Image and Text Row */}
               <div
                 style={{
-                  display: "flex", // Row layout for image and text
-                  alignItems: "center", // Center vertically
-                  gap: "1rem", // Space between image and text
+                  display: "flex", 
+                  alignItems: "center", 
+                  gap: "1rem",
                 }}
               >
                 {/* Image */}
@@ -65,8 +65,8 @@ export default function HorizontalScroller({ products }: { products: Product[] }
                   src={product.imageUrl}
                   alt={product.name}
                   style={{
-                    width: "120px", // Fixed width for the image
-                    height: "120px", // Fixed height for the image
+                    width: "120px", 
+                    height: "120px", 
                     objectFit: "contain",
                     borderRadius: "8px",
                   }}
@@ -75,9 +75,9 @@ export default function HorizontalScroller({ products }: { products: Product[] }
                 {/* Text Section */}
                 <div
                   style={{
-                    flex: 1, // Take up remaining space
+                    flex: 1,
                     display: "flex",
-                    flexDirection: "column", // Stack text items vertically
+                    flexDirection: "column",
                   }}
                 >
                   <p style={{backgroundColor:"red", borderRadius: "50px", color:"white", paddingTop:"3px", paddingLeft:"3px",  paddingBottom:"3px", width:"50px"}}> % {product.dropRatio}</p>
@@ -98,16 +98,16 @@ export default function HorizontalScroller({ products }: { products: Product[] }
               <div
                 style={{
                   display: "flex",
-                  justifyContent: "center", // Centers the dots horizontally
+                  justifyContent: "center",
                   gap: "0.3rem",
-                  marginTop: "1rem", // Space above the dots
+                  marginTop: "1rem",
                 }}
               >
                 {products.map((_, indicatorIndex) => (
                   <div
                     key={indicatorIndex}
                     style={{
-                      width: "8px", // Smaller dots
+                      width: "8px",
                       height: "8px",
                       borderRadius: "50%",
                       backgroundColor: indicatorIndex === activeIndex ? "#007bff" : "#ccc",
