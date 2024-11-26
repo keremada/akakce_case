@@ -10,7 +10,6 @@ interface Props {
 export default function ProductList({ initialProducts, nextUrl }: Props) {
   const [products, setProducts] = useState(initialProducts);
   const [next, setNext] = useState(nextUrl);
-  console.log(products);
 
   const loadMore = async () => {
     if (!next) return;
@@ -22,17 +21,18 @@ export default function ProductList({ initialProducts, nextUrl }: Props) {
 
   return (
     <div style={{ backgroundColor: "#f5f5f5", padding: "2rem" }}>
+      {/* Product Grid */}
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)", // Explicitly create 2 columns
-          gap: "1rem",
+          gridTemplateColumns: "repeat(2, 1fr)",
+          gap: "1.5rem",
         }}
       >
         {products.map((product) => (
           <Link
             key={product.code}
-            to={`/product/${product.code}`} // Navigate to the product detail page
+            to={`/product/${product.code}`}
             style={{ textDecoration: "none", color: "inherit" }}
           >
             <div
@@ -41,45 +41,96 @@ export default function ProductList({ initialProducts, nextUrl }: Props) {
                 padding: "1rem",
                 borderRadius: "8px",
                 boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-                textAlign: "left",
-                height:"450px",
+                height: "450px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
               }}
             >
-             <p style={{marginLeft:"10px", backgroundColor:"red", borderRadius: "50px", color:"white", paddingTop:"3px", paddingLeft:"3px",  paddingBottom:"3px", width:"50px"}}> % {product.dropRatio}</p>
+              {/* Discount Badge */}
+              <p
+                style={{
+                  margin: "0 0 10px 10px",
+                  backgroundColor: "red",
+                  borderRadius: "50px",
+                  color: "white",
+                  padding: "5px 10px",
+                  fontSize: "0.9rem",
+                  fontWeight: "bold",
+                  alignSelf: "flex-start", // Align badge to top-left
+                }}
+              >
+                %{product.dropRatio}
+              </p>
+
+              {/* Product Image */}
               <img
                 src={product.imageUrl}
                 alt={product.name}
                 style={{
-                  maxHeight: "250px",
-                  marginLeft:"auto",
-                  marginRight:"auto",
+                  maxHeight: "200px",
+                  margin: "0 auto",
+                  objectFit: "contain",
                   borderRadius: "8px",
                 }}
               />
-              <h3 style={{ fontSize: "1rem", margin: "0.5rem 0", color:"#66c2ed" }}>
-                {product.name}
-              </h3>
-              <p
+
+              {/* Product Info */}
+              <h3
                 style={{
-                  fontSize: "1.2rem",
-                  fontWeight: "bold",
-                  color: "#333",
+                  fontSize: "1rem",
+                  margin: "0.5rem 0",
+                  color: "#66c2ed",
+                  textAlign: "center",
                 }}
               >
-                {product.price} TL
-              </p>
-              <p style={{ fontSize: "0.9rem", color: "#666" }}>
-                {product.countOfPrices} satıcı &gt;
-              </p>
-              <br>
-              </br>
-              <p style={{ fontSize: "0.9rem", color: "#666" }}>
-                {product.followCount}+ takip
-              </p>
+                {product.name}
+              </h3>
+
+              {/* Price, Seller, and Followers */}
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: "0.3rem"
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "1.2rem",
+                    fontWeight: "bold",
+                    color: "#333",
+                    margin: "0",
+                  }}
+                >
+                  {product.price} TL
+                </p>
+                <p
+                  style={{
+                    fontSize: "0.9rem",
+                    color: "#666",
+                    margin: "0",
+                  }}
+                >
+                  {product.countOfPrices} satıcı &gt;
+                </p>
+
+                <p
+                  style={{
+                    fontSize: "0.9rem",
+                    color: "#666",
+                    margin: "0",
+                  }}
+                >
+                  {product.followCount}+ takip
+                </p>
+              </div>
             </div>
           </Link>
         ))}
       </div>
+
       {next && (
         <button
           onClick={loadMore}
